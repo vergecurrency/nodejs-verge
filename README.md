@@ -6,9 +6,8 @@ ____   _________________________   ________ ___________
    \___/   /_______  / |____|_  / \______  //_______  /
                    \/         \/         \/         \/ 
 ```
-# A Node.js VERGE Client ![VERGE](https://raw.githubusercontent.com/vergecurrency/nodejs-verge/master/node-verge.png)
-
-node-verge is a VERGE client for Node.js. 
+# A Node.js VERGE Client
+node-verge is a VERGE client for node.js
 
 It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub) intended for use with VERGE. The purpose of this repository is:
 
