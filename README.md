@@ -8,7 +8,7 @@ ____   _________________________   ________ ___________
 ```
 # A Node.js VERGE Client
 
-![VERGE](https://raw.githubusercontent.com/vergecurrency/node-verge/master/node-verge.png)
+![VERGE](https://raw.githubusercontent.com/vergecurrency/nodejs-verge/master/node-verge.png)
 
 node-verge is a VERGE client for Node.js. 
 
