@@ -1,0 +1,13 @@
+{
+    "name": "node-verge",
+    "version": "0.3.9",
+    "description": "nodejs VERGE client",
+    "keywords": ["verge"],
+    "repository": "git://github.com/vergecurrency/node-verge.git",
+    "author": "VERGE <vergecurrency@hushmail.com>",
+    "main": "lib/verge.js",
+    "engines": { "node": ">= 0.4.0" },
+    "devDependencies": {
+        "nodeunit": "*"
+    }
+}
