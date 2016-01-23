@@ -6,9 +6,7 @@ ____   _________________________   ________ ___________
    \___/   /_______  / |____|_  / \______  //_______  /
                    \/         \/         \/         \/ 
 ```
-# A Node.js VERGE Client
-
-![VERGE](https://raw.githubusercontent.com/vergecurrency/nodejs-verge/master/node-verge.png)
+# A Node.js VERGE Client ![VERGE](https://raw.githubusercontent.com/vergecurrency/nodejs-verge/master/node-verge.png)
 
 node-verge is a VERGE client for Node.js. 
 
