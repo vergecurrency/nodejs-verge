@@ -1,13 +1,21 @@
 {
-    "name": "node-verge",
-    "version": "0.3.9",
-    "description": "nodejs VERGE client",
-    "keywords": ["verge"],
-    "repository": "git://github.com/vergecurrency/node-verge.git",
-    "author": "VERGE <vergecurrency@hushmail.com>",
-    "main": "lib/verge.js",
-    "engines": { "node": ">= 0.4.0" },
-    "devDependencies": {
-        "nodeunit": "*"
-    }
+  "name": "node-verge",
+  "version": "0.3.9",
+  "description": "nodejs VERGE client",
+  "keywords": [
+    "verge"
+  ],
+  "repository": "git://github.com/vergecurrency/node-verge.git",
+  "author": "VERGE <vergecurrency@hushmail.com>",
+  "main": "lib/verge.js",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-airbnb-deps": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodeunit": "*"
+  }
 }
