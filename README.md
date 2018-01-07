@@ -1,10 +1,10 @@
 ```
 ____   _________________________   ________ ___________
 \   \ /   /\_   _____/\______   \ /  _____/ \_   _____/
- \   Y   /  |    __)_  |       _//   \  ___  |    __)_ 
-  \     /   |        \ |    |   \\    \_\  \ |        \ 2016 VERGE
+ \   Y   /  |    __)_  |       _//   \  ___  |    __)_
+  \     /   |        \ |    |   \\    \_\  \ |        \ 2018 VERGE
    \___/   /_______  / |____|_  / \______  //_______  /
-                   \/         \/         \/         \/ 
+                   \/         \/         \/         \/
 ```
 # A Node.js VERGE Client
 node-verge is a VERGE client for node.js
@@ -290,7 +290,7 @@ All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, i
 </li><li> "hash1": formatted hash buffer for second hash
 </li><li> "target": little endian hash target
 </li></ul>
-<p>If [data] is specified, tries to solve the block and returns true if it was successful. 
+<p>If [data] is specified, tries to solve the block and returns true if it was successful.
 </p>
 </td>
 <td> N
@@ -523,7 +523,7 @@ By default `verged` exposes its JSON-RPC interface via HTTP; that is, all RPC co
     rpcsslprivatekeyfile=/etc/ssl/private/verged.pem
 
 In order to securely access an SSL encrypted JSON-RPC interface you need a copy of the self-signed certificate from the server: in this case `verged.crt`. Pass your self-signed certificate in the `ca` option and set `https: true` and node-verge is secured!
-    
+
 ```js
 var fs = require('fs')
 
