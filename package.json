@@ -2,9 +2,7 @@
   "name": "node-verge",
   "version": "0.3.9",
   "description": "nodejs VERGE client",
-  "keywords": [
-    "verge"
-  ],
+  "keywords": ["verge"],
   "repository": "git://github.com/vergecurrency/node-verge.git",
   "author": "VERGE <vergecurrency@hushmail.com>",
   "main": "dist/index.js",
@@ -16,7 +14,6 @@
     "@types/node": "^9.6.5",
     "@types/request-promise": "^4.1.41",
     "global": "^4.3.2",
-    "request-promise": "^4.2.2",
     "typescript": "^2.8.1"
   },
   "scripts": {
