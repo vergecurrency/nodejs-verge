@@ -36,17 +36,6 @@ export class Client extends API {
     }
   }
 
-  private invalid(command: string) {
-    var args = Array.prototype.slice.call(arguments, 1),
-      fn = args.pop()
-
-    if (typeof fn !== 'function') {
-      fn = console.log
-    }
-
-    return fn(new Error('No such command "' + command + '"'))
-  }
-
   private send(command: string, ...args: any[]): Promise<any> {
     var rpcData = {
       id: new Date().getTime(),
@@ -115,11 +104,6 @@ export class Client extends API {
     return promisedRequest
   }
 
-  private exec(command) {
-    var func = this.isCommand(command) ? 'send' : 'invalid'
-    return this[func].apply(this, arguments)
-  }
-
   private auth(user: string, pass: string) {
     if (user && pass) {
       var authString =
@@ -129,6 +113,7 @@ export class Client extends API {
     return this
   }
 
+  /* TODO: make unlock working again
   private unlock(command, args, fn) {
     var self = this
 
@@ -154,7 +139,7 @@ export class Client extends API {
         self.send('walletpassphrase', passphrase, timeout, retry)
       }
     })
-  }
+  }*/
 
   getBalance(account?: string): Promise<number> {
     return this.send('getbalance', account).catch(console.error)
