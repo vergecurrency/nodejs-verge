@@ -1,13 +1,31 @@
 {
-    "name": "node-verge",
-    "version": "0.3.9",
-    "description": "nodejs VERGE client",
-    "keywords": ["verge"],
-    "repository": "git://github.com/vergecurrency/node-verge.git",
-    "author": "VERGE <vergecurrency@hushmail.com>",
-    "main": "lib/verge.js",
-    "engines": { "node": ">= 0.4.0" },
-    "devDependencies": {
-        "nodeunit": "*"
-    }
+  "name": "node-verge",
+  "version": "0.3.9",
+  "description": "nodejs VERGE client",
+  "keywords": [
+    "verge"
+  ],
+  "repository": "git://github.com/vergecurrency/node-verge.git",
+  "author": "VERGE <vergecurrency@hushmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "@types/node": "^9.6.5",
+    "@types/request-promise": "^4.1.41",
+    "global": "^4.3.2",
+    "request-promise": "^4.2.2",
+    "typescript": "^2.8.1"
+  },
+  "scripts": {
+    "dist": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint 'src/**/*.ts'"
+  },
+  "devDependencies": {
+    "codelyzer": "^4.2.1",
+    "tslint": "^5.9.1"
+  }
 }
