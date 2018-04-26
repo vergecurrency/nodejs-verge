@@ -1,10 +1,8 @@
 {
 	"name": "verge-node-typescript",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"description": "NodeJS typescript RPC client for VERGE currency",
-	"keywords": [
-		"verge"
-	],
+	"keywords": ["verge"],
 	"repository": "git://github.com/marpme/verge-node-typescript.git",
 	"author": "VERGE",
 	"main": "dist/index.js",
@@ -20,7 +18,7 @@
 	"scripts": {
 		"dist": "tsc",
 		"watch": "tsc -w",
-		"start": "tsc && node .\\dist\\index.js",
+		"start": "tsc && node ./dist/index.js",
 		"lint": "tslint 'src/**/*.ts'"
 	},
 	"devDependencies": {

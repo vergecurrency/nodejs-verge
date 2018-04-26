@@ -1,78 +1,80 @@
 import { Client } from './Client'
 import { Transaction } from './Transaction'
 import { Block } from './Block'
+import { WalletInfo } from './WalletInfo'
+import { Peer } from './Peer'
 
 export abstract class API {
-  commands: Array<string> = new Array(
-    'addMultiSigAddress',
-    'backupWallet',
-    'createRawTransaction',
-    'decodeRawTransaction',
-    'dumpPrivKey',
-    'encryptWallet',
-    'getAccount',
-    'getAccountAddress',
-    'getAddressesByAccount',
-    'getBalance',
-    'getBlock',
-    'getBlockCount',
-    'getBlockHash',
-    'getConnectionCount',
-    'getDifficulty',
-    'getGenerate',
-    'getHashesPerSec',
-    'getInfo',
-    'getMemoryPool',
-    'getMiningInfo',
-    'getNewAddress',
-    'getRawTransaction',
-    'getReceivedByAccount',
-    'getReceivedByAddress',
-    'getTransaction',
-    'getWork',
-    'help',
-    'importPrivKey',
-    'importAddress',
-    'keyPoolRefill',
-    'listAccounts',
-    'listReceivedByAccount',
-    'listReceivedByAddress',
-    'listSinceBlock',
-    'listTransactions',
-    'listUnspent',
-    'move',
-    'sendFrom',
-    'sendMany',
-    'sendRawTransaction',
-    'sendToAddress',
-    'setAccount',
-    'setGenerate',
-    'setTxFee',
-    'signMessage',
-    'signRawTransaction',
-    'stop',
-    'validateAddress',
-    'verifyMessage',
-    'walletLock',
-    'walletPassphrase',
-    'walletPassphraseChange'
-  )
+	commands: Array<string> = new Array(
+		'addMultiSigAddress',
+		'backupWallet',
+		'createRawTransaction',
+		'decodeRawTransaction',
+		'dumpPrivKey',
+		'encryptWallet',
+		'getAccount',
+		'getAccountAddress',
+		'getAddressesByAccount',
+		'getBalance',
+		'getBlock',
+		'getBlockCount',
+		'getBlockHash',
+		'getConnectionCount',
+		'getDifficulty',
+		'getGenerate',
+		'getHashesPerSec',
+		'getInfo',
+		'getMemoryPool',
+		'getMiningInfo',
+		'getNewAddress',
+		'getRawTransaction',
+		'getReceivedByAccount',
+		'getReceivedByAddress',
+		'getTransaction',
+		'getWork',
+		'help',
+		'importPrivKey',
+		'importAddress',
+		'keyPoolRefill',
+		'listAccounts',
+		'listReceivedByAccount',
+		'listReceivedByAddress',
+		'listSinceBlock',
+		'listTransactions',
+		'listUnspent',
+		'move',
+		'sendFrom',
+		'sendMany',
+		'sendRawTransaction',
+		'sendToAddress',
+		'setAccount',
+		'setGenerate',
+		'setTxFee',
+		'signMessage',
+		'signRawTransaction',
+		'stop',
+		'validateAddress',
+		'verifyMessage',
+		'walletLock',
+		'walletPassphrase',
+		'walletPassphraseChange'
+	)
 
-  isCommand(command: string): boolean {
-    const lowerCommand: string = command.toLowerCase()
+	isCommand(command: string): boolean {
+		const lowerCommand: string = command.toLowerCase()
 
-    var lowerCaseCommands = this.getCommands().map((item: string) =>
-      item.toLowerCase()
-    )
+		var lowerCaseCommands = this.getCommands().map((item: string) =>
+			item.toLowerCase()
+		)
 
-    return lowerCaseCommands.indexOf(lowerCommand) !== -1
-  }
+		return lowerCaseCommands.indexOf(lowerCommand) !== -1
+	}
 
-  getCommands(): Array<string> {
-    return this.commands
-  }
+	getCommands(): Array<string> {
+		return this.commands
+	}
 
-  /*abstract addMultiSigAddress(
+	/*abstract addMultiSigAddress(
     nrequire: string,
     keys: string[],
     account: string
@@ -95,9 +97,9 @@ export abstract class API {
   abstract getAccountAddress(account: string): Promise<string>
   abstract getAddressesByAccount(account: string): Promise<string>*/
 
-  abstract getBalance(account?: string): Promise<number>
+	abstract getBalance(account?: string): Promise<number>
 
-  /*abstract getBlock(hash: string, txinfo?: string): Promise<Block>
+	/*abstract getBlock(hash: string, txinfo?: string): Promise<Block>
 
   abstract getBlockCount(): Client
 
@@ -109,11 +111,13 @@ export abstract class API {
 
   abstract getGenerate(): Client
 
-  abstract getHashesPerSec(): Client
+  abstract getHashesPerSec(): Client*/
 
-  abstract getInfo(): Client
+	abstract getInfo(): Promise<WalletInfo>
 
-  abstract getMemoryPool(): Client
+	abstract getPeerInfo(): Promise<Array<Peer>>
+
+	/*abstract getMemoryPool(): Client
 
   abstract getMiningInfo(): Client
 

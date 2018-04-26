@@ -5,9 +5,8 @@ export { Client } from './Client'
   to prove that this is working :)
 
 const myClient: Client = new Client({
-  pass: 'pass',
-  user: 'user',
+	pass: 'lolcat',
+	user: 'kyon',
 })
 
-myClient.getBalance().then(console.log)
-*/
+myClient.unlockWallet('')*/
