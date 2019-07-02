@@ -7,7 +7,7 @@ ____   _________________________   ________ ___________
                    \/         \/         \/         \/
 ```
 # A Node.js VERGE Client
-node-verge is a VERGE client for node.js
+nodejs-verge is a VERGE client for node.js
 
 It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub) intended for use with VERGE. The purpose of this repository is:
 
@@ -22,14 +22,14 @@ You'll need a running instance of [verged](https://github.com/vergecurrency/verg
 
 Then, install the node-verge NPM package.
 
-`npm install node-verge`
+`npm install nodejs-verge`
 
 ## Examples
 
 Some code examples follow below
 
 ```js
-var verge = require('node-verge')()
+var verge = require('nodejs-verge')()
 
 verge.auth('myusername', 'mypassword')
 
@@ -44,7 +44,7 @@ verge.getDifficulty(function() {
 Pretty much everything is chainable.
 
 ```js
-var verge = require('node-verge')()
+var verge = require('nodejs-verge')()
 
 verge
 .auth('MyUserName', 'mypassword')
@@ -484,7 +484,7 @@ You may pass an optional function `passphrasecallback` to the `node-verge` initi
 You may hard code your passphrase (not recommended) as follows:
 
 ```js
-var verge = require('node-verge')({
+var verge = require('nodejs-verge')({
     passphrasecallback: function(command, args, callback) {
         callback(null, 'passphrase', 30);
     }
@@ -501,7 +501,7 @@ var rl = readline.createInterface({
   output: process.stdout
 })
 
-var verge = require('node-verge')({
+var verge = require('nodejs-verge')({
   passphrasecallback: function(command, args, callback) {
     rl.question('Enter passphrase for "' + command + '" operation: ', function(passphrase) {
       if (passphrase) {
@@ -529,7 +529,7 @@ var fs = require('fs')
 
 var ca = fs.readFileSync('verged.crt')
 
-var verge = require('node-verge')({
+var verge = require('nodejs-verge')({
   user: 'rpcusername',
   pass: 'rpcpassword',
   https: true,
@@ -547,9 +547,9 @@ nodeunit test/test-node-verge.js
 
 ## Bounties
 
-[VERGE](http://www.vergecurrency.com) donation address is DPNC2H2pYUCSebQ992GyeRTRuWw3hCTBwD
+[VERGE](https://vergecurrency.com) donation address is DPNC2H2pYUCSebQ992GyeRTRuWw3hCTBwD
 
-Donations in [verge](http://www.vergecurrency.com) will be used for bounties, and holding. As a side note: I encourage all GitHub repository owners to post a donation address so their community can easily support development financially.
+Donations in [verge](https://vergecurrency.com) will be used for bounties, and holding. As a side note: I encourage all GitHub repository owners to post a donation address so their community can easily support development financially.
 
 
 
