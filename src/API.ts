@@ -47,6 +47,7 @@ export abstract class API {
 		'sendMany',
 		'sendRawTransaction',
 		'sendToAddress',
+		'sendToStealthAddress',
 		'setAccount',
 		'setGenerate',
 		'setTxFee',
