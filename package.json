@@ -21,7 +21,7 @@
 		"dist": "tsc",
 		"watch": "tsc -w",
 		"start": "tsc && node ./dist/index.js",
-		"lint": "tslint 'src/**/*.ts'"
+		"lint": "eslint 'src/**/*.ts'"
 	},
 	"devDependencies": {
 		"codelyzer": "^6.0.2",
