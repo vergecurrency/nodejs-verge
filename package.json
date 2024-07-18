@@ -24,7 +24,7 @@
 		"lint": "eslint 'src/**/*.ts'"
 	},
 	"devDependencies": {
-		"codelyzer": "^6.0.2",
+		"codelyzer": "^0.0.28",
 		"eslint": "^9.0.0"
 	}
 }
