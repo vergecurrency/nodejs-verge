@@ -1,4 +1,4 @@
-x{
+{
 	"name": "nodejs-verge",
 	"version": "0.0.4",
 	"description": "NodeJS typescript RPC client for VERGE currency",
