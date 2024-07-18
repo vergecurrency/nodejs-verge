@@ -2,7 +2,7 @@
 ____   _________________________   ________ ___________
 \   \ /   /\_   _____/\______   \ /  _____/ \_   _____/
  \   Y   /  |    __)_  |       _//   \  ___  |    __)_
-  \     /   |        \ |    |   \\    \_\  \ |        \ 2023 VERGE
+  \     /   |        \ |    |   \\    \_\  \ |        \ 2024 VERGE
    \___/   /_______  / |____|_  / \______  //_______  /
                    \/         \/         \/         \/
 ```
@@ -18,7 +18,7 @@ It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub
 
 ## Dependencies
 
-You'll need a running instance of [verged](https://github.com/vergecurrency/verge) to connect with.
+You'll need a running instance of [verged](https://github.com/vergecurrency/verge) to connect with. 
 
 Then, install the node-verge NPM package.
 
