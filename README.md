@@ -58,29 +58,7 @@ verge
 .getBalance()
 ```
 
-## Methods
 
-The [Litecoin API](https://litecoin.info/Litecoin_API) is supported as direct methods. Use either camelcase or lowercase.
-
-```js
-verge.getNewAddress(function(err, address) {
-    this.validateaddress(address, function(err, info) {
-
-    })
-})
-```
-### .exec(command [string], ...arguments..., callback [function])
-
-Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
-All of the API commands are supported in lowercase or camelcase. Or uppercase. Anycase!
-
-```js
-verge.exec('getNewAddress')
-
-verge.exec('getbalance', function(err, balance) {
-
-})
-```
 
 ### .set(key [string, object], value [optional])
 
@@ -105,8 +83,6 @@ Generates authorization header, returns `this` for chainability
 ## Commands
 
 TODO: Write tests for these.
-
-All [Litecoin API](https://litecoin.info/Litecoin_API) commands are supported, in lowercase or camelcase form.
 
 <table>
 <tr>
@@ -548,14 +524,16 @@ var verge = require('nodejs-verge')({
 ```
 npm install -g nodeunit
 
-nodeunit test/test-node-verge.js
+nodeunit test/test-nodejs-verge.js
 ```
 
-## Bounties
+## Donate
 
-[VERGE](https://vergecurrency.com) donation address is DPNC2H2pYUCSebQ992GyeRTRuWw3hCTBwD
+[VERGE](https://vergecurrency.com) donation address is DHe3mTNQztY1wWokdtMprdeCKNoMxyThoV
 
-Donations in [verge](https://vergecurrency.com) will be used for bounties, and holding. As a side note: I encourage all GitHub repository owners to post a donation address so their community can easily support development financially.
+Donations in [verge](https://vergecurrency.com) will be used for bounties, and holding. 
+As a side note: I encourage all GitHub repository owners to post a donation address so 
+their community can easily support development financially.
 
 
 
