@@ -9,6 +9,12 @@ ____   _________________________   ________ ___________
 # A Node.js VERGE Client
 nodejs-verge is a VERGE client for node.js
 
+<p align="left">
+  <a href="https://github.com/vergecurrency/nodejs-verge/actions/workflows/node.js.yml">
+  <img src="https://github.com/vergecurrency/nodejs-verge/actions/workflows/node.js.yml/badge.svg">
+  </a>
+</p>
+
 It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub) intended for use with VERGE. The purpose of this repository is:
 
 * Provide a one-stop resource for the Node.js developer to get started with VERGE integration.

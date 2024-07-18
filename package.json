@@ -1,4 +1,4 @@
-{
+x{
 	"name": "nodejs-verge",
 	"version": "0.0.4",
 	"description": "NodeJS typescript RPC client for VERGE currency",
@@ -25,6 +25,6 @@
 	},
 	"devDependencies": {
 		"codelyzer": "^6.0.2",
-		"tslint": "^6.1.3"
+		"eslint": "^9.0.0"
 	}
 }
