@@ -22,9 +22,11 @@ It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub
 * Promote Node.js development of VERGE web apps.
 * Identify and address any incompatibilities with the VERGE APIs that exist now, and/or in the future.
 
-## Dependencies
-
-You'll need a running instance of [verged](https://github.com/vergecurrency/verge) to connect with. 
+## Dependencies<br>
+@types/node: "^20.14.11"<br>
+global: "^4.4.0"<br>
+typescript: "^5.5.3"<br>
+You'll need a running instance of [verged](https://github.com/vergecurrency/verge) to connect with. <br>
 
 Then, install the node-verge NPM package.
 
