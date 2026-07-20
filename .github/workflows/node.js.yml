@@ -36,13 +36,15 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
-      VERGE_ARCHIVE: ${{ runner.temp }}/verge-ubuntu24-appimages-v26.5.1.zip
       VERGE_ARCHIVE_SHA256: 26cce09add16cc620b7b3b53dd5142c1b22e1698733c95fdcb943cf79ce07622
-      VERGE_BIN_DIR: ${{ runner.temp }}/verge-v26.5.1
-      VERGE_DATA_DIR: ${{ runner.temp }}/verged-data
 
     steps:
     - uses: actions/checkout@v4
+    - name: Configure temporary paths
+      run: |
+        echo "VERGE_ARCHIVE=$RUNNER_TEMP/verge-ubuntu24-appimages-v26.5.1.zip" >> "$GITHUB_ENV"
+        echo "VERGE_BIN_DIR=$RUNNER_TEMP/verge-v26.5.1" >> "$GITHUB_ENV"
+        echo "VERGE_DATA_DIR=$RUNNER_TEMP/verged-data" >> "$GITHUB_ENV"
     - uses: actions/setup-node@v4
       with:
         node-version: 20.x
