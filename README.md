@@ -22,11 +22,9 @@ It is a fork of the excellent Kapitalize Bitcoin Client (now removed from GitHub
 * Promote Node.js development of VERGE web apps.
 * Identify and address any incompatibilities with the VERGE APIs that exist now, and/or in the future.
 
-## Dependencies<br>
-@types/node: "^20.14.11"<br>
-global: "^4.4.0"<br>
-typescript: "^5.5.3"<br>
-You'll need a running instance of [verged](https://github.com/vergecurrency/verge) to connect with. <br>
+## Requirements
+
+Node.js 20 or newer and a running [verged](https://github.com/vergecurrency/verge) instance.
 
 Then, install the node-verge NPM package.
 
@@ -37,50 +35,31 @@ Then, install the node-verge NPM package.
 Some code examples follow below
 
 ```js
-var verge = require('nodejs-verge')()
+const { Client } = require('nodejs-verge')
 
-verge.auth('myusername', 'mypassword')
-
-verge.getDifficulty(function() {
-    console.log(arguments);
+const verge = new Client({
+    user: 'myusername',
+    pass: 'mypassword'
 })
 
+const difficulty = await verge.call('getdifficulty')
+
 ```
 
-## Chaining
+## RPC commands
 
-Pretty much everything is chainable.
+`Client.call(command, ...params)` supports all RPC commands registered by the current
+verged core, wallet, and secure-messaging modules. Command names are type checked in
+TypeScript and are available at runtime through `client.getCommands()`.
 
 ```js
-var verge = require('nodejs-verge')()
-
-verge
-.auth('MyUserName', 'mypassword')
-.getNewAddress()
-.getBalance()
+const info = await verge.call('getblockchaininfo')
+const messages = await verge.call('smsginbox', 'all')
+await verge.call('smsgsend', fromAddress, toAddress, 'hello', false, 7)
 ```
 
-
-
-### .set(key [string, object], value [optional])
-
-Accepts either key & value strings or an Object containing settings, returns `this` for chainability.
-
-```js
-verge.set('host', '127.0.0.1')
-```
-
-### .get(key [string])
-
-Returns the specified option's value
-
-```js
-verge.get('user')
-```
-
-### .auth(user [string], pass [string])
-
-Generates authorization header, returns `this` for chainability
+Convenience methods remain available for `getBalance`, `getInfo`, `getPeerInfo`, and
+`unlockWallet`.
 
 ## Commands
 
@@ -434,7 +413,8 @@ You may pass options to the initialization function or to the `set` method.
 
 ```js
 
-var verge = require('verge')({
+const { Client } = require('nodejs-verge')
+const verge = new Client({
     user:'user'
 })
 
@@ -523,10 +503,10 @@ var verge = require('nodejs-verge')({
 
 ## Testing
 
-```
-npm install -g nodeunit
-
-nodeunit test/test-nodejs-verge.js
+```sh
+npm ci
+npm run lint
+npm test
 ```
 
 ## Donate

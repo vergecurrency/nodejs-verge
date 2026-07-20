@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "es2022",
     "declaration": true,
     "outDir": "./dist",
+    "rootDir": "./src",
     "types": ["node"],
-    "lib": ["es5", "es2015.promise"]
+    "lib": ["es2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

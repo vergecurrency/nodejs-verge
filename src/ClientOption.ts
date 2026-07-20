@@ -1,16 +1,19 @@
-export interface ClientOption {
-  host?: string
-  port?: number
-  method?: string
-  user?: string
-  pass?: string
-  headers?: HeaderOption
-  passphrasecallback?: Function
-  https?: boolean
-  ca?: string
-}
+import { OutgoingHttpHeaders } from 'node:http'
 
-export interface HeaderOption {
-  Host?: string
-  Authorization?: string
+export type PassphraseCallback = (
+	command: string,
+	args: readonly unknown[],
+	callback: (error: Error | null, passphrase?: string, timeout?: number) => void
+) => void
+
+export interface ClientOption {
+	host?: string
+	port?: number
+	method?: string
+	user?: string
+	pass?: string
+	headers?: OutgoingHttpHeaders
+	passphrasecallback?: PassphraseCallback
+	https?: boolean
+	ca?: string | Buffer | Array<string | Buffer>
 }

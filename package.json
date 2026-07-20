@@ -9,22 +9,30 @@
 	"author": "VERGE",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"engines": {
 		"node": ">=20.0.0"
 	},
 	"dependencies": {
-		"@types/node": "^20.14.11",
-		"global": "^4.4.0",
-		"typescript": "^5.5.3"
+		"global": "^4.4.0"
 	},
 	"scripts": {
-		"dist": "tsc",
+		"clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+		"build": "npm run clean && tsc",
+		"dist": "npm run build",
 		"watch": "tsc -w",
-		"start": "tsc && node ./dist/index.js",
-		"lint": "eslint 'src/**/*.ts'"
+		"start": "npm run build && node ./dist/index.js",
+		"lint": "eslint src test",
+		"test": "npm run build && node --test",
+		"prepack": "npm run build"
 	},
 	"devDependencies": {
-		"codelyzer": "^6.0.2",
-		"eslint": "^9.0.0"
+		"@eslint/js": "^9.0.0",
+		"@types/node": "^20.0.0",
+		"eslint": "^9.0.0",
+		"typescript-eslint": "^8.0.0",
+		"typescript": "^6.0.0"
 	}
 }
