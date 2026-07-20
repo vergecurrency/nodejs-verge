@@ -21,6 +21,7 @@ export default tseslint.config(
 		languageOptions: {
 			globals: {
 				Buffer: 'readonly',
+				process: 'readonly',
 				require: 'readonly',
 			},
 		},
