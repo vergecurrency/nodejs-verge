@@ -35,9 +35,12 @@ integrationTest(
 			await client.call('createwallet', 'integration')
 		}
 
-		const minedBlocks = await client.call('generate', 101)
-		assert.equal(minedBlocks.length, 101)
-		assert.equal(await client.call('getblockcount'), 101)
+		// Verge requires COINBASE_MATURITY + 1 confirmations before the
+		// wallet considers a mined output spendable (120 + 1 in v26.7).
+		const minedBlocks = await client.call('generate', 121)
+		assert.equal(minedBlocks.length, 121)
+		assert.equal(await client.call('getblockcount'), 121)
+		assert.ok((await client.call('getbalance')) > 0)
 
 		const recipient = await client.call('getnewaddress', 'integration-recipient')
 		const txid = await client.call('sendtoaddress', recipient, 1)
@@ -50,7 +53,7 @@ integrationTest(
 		assert.equal(transaction.txid, txid)
 		assert.ok(transaction.confirmations >= 1)
 
-		const blockHash = await client.call('getblockhash', 102)
+		const blockHash = await client.call('getblockhash', 122)
 		const block = await client.call('getblock', blockHash)
 		assert.equal(block.hash, blockHash)
 		assert.ok(block.tx.includes(txid))
