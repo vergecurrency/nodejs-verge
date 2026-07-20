@@ -35,12 +35,7 @@ integrationTest(
 			await client.call('createwallet', 'integration')
 		}
 
-		const miningAddress = await client.call('getnewaddress', 'integration-mining')
-		const minedBlocks = await client.call(
-			'generatetoaddress',
-			101,
-			miningAddress
-		)
+		const minedBlocks = await client.call('generate', 101)
 		assert.equal(minedBlocks.length, 101)
 		assert.equal(await client.call('getblockcount'), 101)
 
@@ -48,11 +43,7 @@ integrationTest(
 		const txid = await client.call('sendtoaddress', recipient, 1)
 		assert.match(txid, /^[0-9a-f]{64}$/)
 
-		const confirmationBlocks = await client.call(
-			'generatetoaddress',
-			1,
-			miningAddress
-		)
+		const confirmationBlocks = await client.call('generate', 1)
 		assert.equal(confirmationBlocks.length, 1)
 
 		const transaction = await client.call('gettransaction', txid)

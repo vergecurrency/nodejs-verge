@@ -31,37 +31,37 @@ jobs:
     - run: npm test
 
   verged-integration:
-    name: Verge Core v26.5.1 integration
+    name: Verge Core v26.7 integration
     needs: build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
-      VERGE_ARCHIVE_SHA256: 26cce09add16cc620b7b3b53dd5142c1b22e1698733c95fdcb943cf79ce07622
+      VERGE_ARCHIVE_SHA256: f1476ac7e5a5d5ccfac1d2c79104c4cf4cf62de979e45448c33d180dfee34799
 
     steps:
     - uses: actions/checkout@v4
     - name: Configure temporary paths
       run: |
-        echo "VERGE_ARCHIVE=$RUNNER_TEMP/verge-ubuntu24-appimages-v26.5.1.zip" >> "$GITHUB_ENV"
-        echo "VERGE_BIN_DIR=$RUNNER_TEMP/verge-v26.5.1" >> "$GITHUB_ENV"
+        echo "VERGE_ARCHIVE=$RUNNER_TEMP/verge-ubuntu24-appimages-v26.7.zip" >> "$GITHUB_ENV"
+        echo "VERGE_BIN_DIR=$RUNNER_TEMP/verge-v26.7" >> "$GITHUB_ENV"
         echo "VERGE_DATA_DIR=$RUNNER_TEMP/verged-data" >> "$GITHUB_ENV"
     - uses: actions/setup-node@v4
       with:
         node-version: 20.x
         cache: npm
     - run: npm ci
-    - name: Cache Verge Core v26.5.1
+    - name: Cache Verge Core v26.7
       id: cache-verge
       uses: actions/cache@v4
       with:
         path: ${{ env.VERGE_ARCHIVE }}
-        key: verge-core-v26.5.1-ubuntu24-${{ env.VERGE_ARCHIVE_SHA256 }}
-    - name: Download Verge Core v26.5.1
+        key: verge-core-v26.7-ubuntu24-${{ env.VERGE_ARCHIVE_SHA256 }}
+    - name: Download Verge Core v26.7
       if: steps.cache-verge.outputs.cache-hit != 'true'
       run: |
         curl --fail --location --retry 3 \
           --output "$VERGE_ARCHIVE" \
-          https://github.com/vergecurrency/verge/releases/download/v26.5.1/verge-ubuntu24-appimages.zip
+          https://github.com/vergecurrency/verge/releases/download/v26.7/verge-ubuntu24-appimages.zip
     - name: Verify and extract Verge Core
       run: |
         echo "$VERGE_ARCHIVE_SHA256  $VERGE_ARCHIVE" | sha256sum --check --strict
@@ -88,7 +88,7 @@ jobs:
           sleep 1
         done
         echo "verged RPC did not become ready" >&2
-        tail -n 200 "$VERGE_DATA_DIR/debug.log" || true
+        tail -n 200 "$VERGE_DATA_DIR/regtest/debug.log" || true
         exit 1
     - name: Test against verged
       env:
@@ -98,7 +98,7 @@ jobs:
       run: npm test
     - name: Show daemon log on failure
       if: failure()
-      run: tail -n 200 "$VERGE_DATA_DIR/debug.log" || true
+      run: tail -n 200 "$VERGE_DATA_DIR/regtest/debug.log" || true
     - name: Stop verged
       if: always()
       run: |
