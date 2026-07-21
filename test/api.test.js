@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict')
+const fs = require('node:fs')
 const http = require('node:http')
 const test = require('node:test')
 
@@ -9,6 +10,18 @@ test('command catalog matches the current verged registration inventory', () => 
 	assert.equal(new Set(RPC_COMMANDS).size, RPC_COMMANDS.length)
 	assert.equal(RPC_COMMANDS.filter(command => command.startsWith('smsg')).length, 19)
 	assert.equal(RPC_COMMANDS.includes('flushsmgsdb'), true)
+})
+
+test('README lists every supported RPC command exactly once', () => {
+	const readme = fs.readFileSync('README.md', 'utf8')
+	const commandSection = readme.match(
+		/<!-- RPC_COMMANDS_START -->\s*```text\s*([\s\S]*?)\s*```\s*<!-- RPC_COMMANDS_END -->/
+	)
+
+	assert.notEqual(commandSection, null)
+	const documentedCommands = commandSection[1].trim().split(/\r?\n/)
+	assert.equal(new Set(documentedCommands).size, documentedCommands.length)
+	assert.deepEqual(documentedCommands, RPC_COMMANDS)
 })
 
 test('client applies defaults and supplied options', () => {
@@ -69,4 +82,34 @@ test('call sends the exact command and preserves falsy positional parameters', a
 	const result = await client.call('smsgsend', 'from', 'to', '', false, 0)
 
 	assert.equal(result, 'sent')
+})
+
+test('call dispatches every supported RPC command', async t => {
+	const receivedCommands = []
+	const server = http.createServer((request, response) => {
+		let body = ''
+		request.setEncoding('utf8')
+		request.on('data', chunk => {
+			body += chunk
+		})
+		request.on('end', () => {
+			const rpcRequest = JSON.parse(body)
+			receivedCommands.push(rpcRequest.method)
+			response.setHeader('Content-Type', 'application/json')
+			response.end(
+				JSON.stringify({ id: rpcRequest.id, error: null, result: rpcRequest.method })
+			)
+		})
+	})
+	await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
+	t.after(() => server.close())
+	const address = server.address()
+	assert.equal(typeof address, 'object')
+
+	const client = new Client({ host: '127.0.0.1', port: address.port })
+	for (const command of RPC_COMMANDS) {
+		assert.equal(await client.call(command), command)
+	}
+
+	assert.deepEqual(receivedCommands, RPC_COMMANDS)
 })
