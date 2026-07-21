@@ -15,11 +15,17 @@ test('command catalog matches the current verged registration inventory', () => 
 test('README lists every supported RPC command exactly once', () => {
 	const readme = fs.readFileSync('README.md', 'utf8')
 	const commandSection = readme.match(
-		/<!-- RPC_COMMANDS_START -->\s*```text\s*([\s\S]*?)\s*```\s*<!-- RPC_COMMANDS_END -->/
+		/<!-- RPC_COMMANDS_START -->([\s\S]*?)<!-- RPC_COMMANDS_END -->/
 	)
 
 	assert.notEqual(commandSection, null)
-	const documentedCommands = commandSection[1].trim().split(/\r?\n/)
+	const rows = commandSection[1].trim().split(/\r?\n/).slice(2)
+	const documentedCommands = rows.map(row => {
+		const cells = row.match(/^\| `([^`]+)` \| (.+) \|$/)
+		assert.notEqual(cells, null, `invalid RPC documentation row: ${row}`)
+		assert.notEqual(cells[2].trim(), '')
+		return cells[1]
+	})
 	assert.equal(new Set(documentedCommands).size, documentedCommands.length)
 	assert.deepEqual(documentedCommands, RPC_COMMANDS)
 })
